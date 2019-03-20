@@ -27,7 +27,7 @@ app.post('/createUser', (req, res) => {
       // Add user to DB
       let query = 'INSERT INTO users (name, userName, email, password) VALUES ("'+req.body.name+'", "'+req.body.userName+'", "'+req.body.email+'", "'+req.body.password+'");'
       db.query(query, (err, result) => {
-        console.log(err)
+        console.log(err.fatal)
         res.send('Done!')
       })
 
