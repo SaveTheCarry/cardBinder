@@ -17,10 +17,10 @@ let db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: process.env.DB_NAME
+  database: "will"
 })
 
-app.post('/createAccount', (req, res) => {
+app.post('/createUser', (req, res) => {
   // Check if user already exists
   db.query('SELECT * FROM User_Account WHERE Username="' + req.body.username + '"', (err, result) => {
     if (result.length > 1) {
@@ -28,7 +28,7 @@ app.post('/createAccount', (req, res) => {
       res.send('Account already exists.')
     } else {
       // Add user to DB
-      let query = 'INSERT INTO User_Account (First_Name, Last_Name, Username, Password, Street, City, State, Zip) VALUES ("' + req.body.firstName + '", "' + req.body.lastName + '", "' + req.body.userName + '", "' + req.body.password + '", "' + req.body.street + '", "' + req.body.city + '", "' + req.body.state + '", ' + req.body.zip + ');'
+      let query = 'INSERT INTO users (name, userName, email, password) VALUES ("'+req.body.name+'", "'+req.body.userName+'", "'+req.body.email+'", "'+req.body.password+'");'
       db.query(query, (err, result) => {
         res.send('Done!')
       })
