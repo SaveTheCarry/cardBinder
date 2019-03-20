@@ -3,7 +3,7 @@ const express    = require('express')
 const mysql      = require('mysql')
 const app        = express()
 const bodyParser = require('body-parser')
-const port       = process.argv[2] !== undefined ? process.argv[2] : 3306 // Defaults to port 3000 if none is specified.
+const port       = process.argv[2] !== undefined ? process.argv[2] : 3000 // Defaults to port 3000 if none is specified.
 // Parse JSON post bodies automatically
 app.use(bodyParser.json())
 // Enable CORS
@@ -22,7 +22,7 @@ let db = mysql.createConnection({
 
 app.post('/createUser', (req, res) => {
   // Check if user already exists
-  db.query('SELECT * FROM users WHERE UserName="' + req.body.username + '"', (err, result) => {
+  db.query('SELECT * FROM users WHERE userName="' + req.body.username + '"', (err, result) => {
     if (result.length > 1) {
       console.log(result)
       res.send('Account already exists.')
