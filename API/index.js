@@ -3,7 +3,7 @@ const express    = require('express')
 const mysql      = require('mysql')
 const app        = express()
 const bodyParser = require('body-parser')
-const port       = process.argv[2] !== undefined ? process.argv[2] : 3000 // Defaults to port 3000 if none is specified.
+const port       = process.argv[2] !== undefined ? process.argv[2] : 3306 // Defaults to port 3000 if none is specified.
 // Parse JSON post bodies automatically
 app.use(bodyParser.json())
 // Enable CORS
