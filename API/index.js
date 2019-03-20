@@ -22,15 +22,17 @@ let db = mysql.createConnection({
 
 app.post('/createUser', (req, res) => {
   // Check if user already exists
-  db.query('SELECT * FROM users ', (err, result) => {
-   
+  db.query('SELECT * FROM users WHERE userName="' + req.body.userName + '"', (err, result) => {
+    if (result.length > 1) {
+      console.log(result)
+      res.send('Account already exists.')
+    } else {
       // Add user to DB
       let query = 'INSERT INTO users (name, userName, email, password) VALUES ("'+req.body.name+'", "'+req.body.userName+'", "'+req.body.email+'", "'+req.body.password+'");'
       db.query(query, (err, result) => {
-        
         res.send('Done!')
       })
-
+    }
   })
 })
 
