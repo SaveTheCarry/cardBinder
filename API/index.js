@@ -22,7 +22,7 @@ let db = mysql.createConnection({
 
 app.post('/createUser', (req, res) => {
   // Check if user already exists
-  db.query('SELECT * FROM users WHERE userName="' + req.body.userName + '"', (err, result) => {
+  db.query('SELECT * FROM will.users WHERE userName="' + req.body.userName + '"', (err, result) => {
     if (result.length > 1) {
       console.log(result)
       res.send('Account already exists.')
