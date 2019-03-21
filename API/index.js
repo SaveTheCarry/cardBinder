@@ -1,11 +1,11 @@
 require('dotenv').config() // Retrieves DB login information from untracked .env file for basic security.
-const express    = require('express')
-const mysql      = require('mysql')
-const app        = express()
-const bodyParser = require('body-parser')
-const port       = process.argv[2] !== undefined ? process.argv[2] : 3000 // Defaults to port 3000 if none is specified.
+const express    = require('express');
+const mysql      = require('mysql');
+const app        = express();
+const bodyParser = require('body-parser');
+const port       = process.argv[2] !== undefined ? process.argv[2] : 3000; // Defaults to port 3000 if none is specified.
 // Parse JSON post bodies automatically
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 // Enable CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
@@ -14,16 +14,16 @@ app.use(function(req, res, next) {
 });
 // Configure class MariaDB connection with environment variables.
 let db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  host: "cardbinder.cr2ufxobdozu.us-east-2.rds.amazonaws.com",
+  user: "will",
+  password: "HallPass",
 
   
-})
+});
 db.connect((err)=>{
-  console.log("connected step 1")
+  console.log("connected step 1");
   if (!err){
-    console.log("connected: !err")
+    console.log("connected: !err");
   }
   if (err){
     console.log(err)
