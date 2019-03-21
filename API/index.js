@@ -24,12 +24,12 @@ let db = mysql.createConnection({
 app.post('/createUser', (req, res) => {
   console.log(process.env.DB_HOST)
   // Check if user already exists
-  db.query('SELECT * FROM users;',(err, result) => {//WHERE userName="' + req.body.userName + '"', (err, result) => {
+  db.query('SELECT * FROM will.users;',(err, result) => {//WHERE userName="' + req.body.userName + '"', (err, result) => {
     
     
     if (!result ) {
       
-      let query = 'INSERT INTO users (name, userName, email, password) VALUES ("'+req.body.name+'", "'+req.body.userName+'", "'+req.body.email+'", "'+req.body.password+'");'
+      let query = 'INSERT INTO will.users (name, userName, email, password) VALUES ("'+req.body.name+'", "'+req.body.userName+'", "'+req.body.email+'", "'+req.body.password+'");'
       db.query(query, (err, result) => {
         console.log(result);
         res.send('Done!: 201')
@@ -45,8 +45,8 @@ app.post('/createUser', (req, res) => {
 // Delete user account
 app.get('/test', (req, res) => {
   // Check if user already exists
-  db.query('SELECT * FROM users;', (req, res) => {
-    res.send('we had it there')
+  db.query('DELETE FROM User_Account WHERE Username="'+ req.params.username +'";', (req, res) => {
+    res.send('Deleted!')
   })
 })
 // Start express node web server
