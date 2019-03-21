@@ -20,7 +20,11 @@ let db = mysql.createConnection({
 
   
 })
-
+db.connect((err)=>{
+  if (!err){
+    console.log("connected")
+  }
+});
 app.post('/createUser', (req, res) => {
   console.log(process.env.DB_HOST)
   // Check if user already exists
