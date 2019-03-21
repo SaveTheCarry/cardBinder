@@ -45,8 +45,11 @@ app.post('/createUser', (req, res) => {
 // Delete user account
 app.get('/test', (req, res) => {
   // Check if user already exists
-  db.query('DELETE FROM User_Account WHERE Username="'+ req.params.username +'";', (req, res) => {
+  db.query('SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = "BASE TABLE" AND TABLE_SCHEMA="will"', (req, result) => {
+    
+    console.log(result)
     res.send('Deleted!')
+    
   })
 })
 // Start express node web server
