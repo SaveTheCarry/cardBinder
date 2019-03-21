@@ -35,7 +35,7 @@ app.post('/createUser', (req, res) => {
 
       
       
-    } else if (result.length > 1) {
+    } else if (result.length > 0) {
       // Add user to DB
       console.log(result)
       res.send('Account already exists.')
