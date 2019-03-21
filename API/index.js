@@ -29,7 +29,7 @@ app.post('/createUser', (req, res) => {
       
       let query = 'INSERT INTO users (name, userName, email, password) VALUES ("'+req.body.name+'", "'+req.body.userName+'", "'+req.body.email+'", "'+req.body.password+'");'
       db.query(query, (err, result) => {
-        res.send('Done!')
+        res.send('Done!: 201')
       })
 
 
@@ -44,7 +44,7 @@ app.post('/createUser', (req, res) => {
 })
 
 // Delete user account
-app.get('/deleteAccount/:username', (req, res) => {
+app.get('/test', (req, res) => {
   // Check if user already exists
   db.query('DELETE FROM User_Account WHERE Username="'+ req.params.username +'";', (req, res) => {
     res.send('Deleted!')
