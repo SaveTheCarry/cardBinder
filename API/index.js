@@ -21,8 +21,12 @@ let db = mysql.createConnection({
   
 })
 db.connect((err)=>{
+  console.log("connected step 1")
   if (!err){
-    console.log("connected")
+    console.log("connected: !err")
+  }
+  if (err){
+    console.log("connected: err")
   }
 });
 app.post('/createUser', (req, res) => {
