@@ -18,9 +18,11 @@ let db = mysql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: "cardbinder"
+  
 })
 
 app.post('/createUser', (req, res) => {
+  console.log(process.env.DB_HOST)
   // Check if user already exists
   db.query('SELECT * FROM users;',(err, result) => {//WHERE userName="' + req.body.userName + '"', (err, result) => {
     
