@@ -45,8 +45,8 @@ app.post('/createUser', (req, res) => {
 // Delete user account
 app.get('/test', (req, res) => {
   // Check if user already exists
-  db.query('DELETE FROM User_Account WHERE Username="'+ req.params.username +'";', (req, res) => {
-    res.send('Deleted!')
+  db.query('SELECT * FROM users;', (req, res) => {
+    res.send('we had it there')
   })
 })
 // Start express node web server
