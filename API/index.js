@@ -26,7 +26,7 @@ db.connect((err)=>{
     console.log("connected: !err")
   }
   if (err){
-    console.log("connected: err")
+    console.log(err)
   }
 });
 app.post('/createUser', (req, res) => {
